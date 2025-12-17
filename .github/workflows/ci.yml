@@ -21,8 +21,7 @@ jobs:
       - name: Run Gitleaks scan
         uses: zricethezav/gitleaks-action@v2
         with:
-          format: sarif
-          output: results.sarif
+          args: "detect --source=. --report-format=sarif --report-path=results.sarif"
 
       - name: Set up JDK 21
         uses: actions/setup-java@v3
@@ -63,8 +62,3 @@ jobs:
       # Push Docker image sur Docker Hub
       - name: Push Docker image
         run: docker push $DOCKER_IMAGE_NAME
-        # Push Docker image sur Docker Hub
-      - name: Push Docker image
-        run: docker push $DOCKER_IMAGE_NAME
-      
-
