@@ -20,6 +20,9 @@ jobs:
       # Gitleaks scan
       - name: Run Gitleaks scan
         uses: zricethezav/gitleaks-action@v2
+        with:
+          format: sarif
+          output: results.sarif
 
       - name: Set up JDK 21
         uses: actions/setup-java@v3
@@ -57,4 +60,11 @@ jobs:
           exit-code: '1'
           severity: 'CRITICAL,HIGH'
 
+      # Push Docker image sur Docker Hub
+      - name: Push Docker image
+        run: docker push $DOCKER_IMAGE_NAME
+        # Push Docker image sur Docker Hub
+      - name: Push Docker image
+        run: docker push $DOCKER_IMAGE_NAME
+      
 
